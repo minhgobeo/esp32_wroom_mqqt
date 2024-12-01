@@ -1,3 +1,5 @@
+#ifndef SETUP_WIFI_AND_CONNECT_MQTT
+#define SETUP_WIFI_AND_CONNECT_MQTT
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
@@ -13,13 +15,6 @@ WiFiClientSecure espClient;
 PubSubClient client(espClient);
 // Define topic
 
-int floorrs[10];
-int zones[10];
-int levels[10];
-int indexx = 0;
-int mdnh[3][6] = {0};
-int level[3][6] = {0};
-int timer = 0;
 
 // Define function
 void setup_wifi() {
@@ -62,3 +57,4 @@ void reconnect_wifi_and_mqtt()
     setup_wifi();
     reconnect_mqtt();
 }
+#endif

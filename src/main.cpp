@@ -4,6 +4,7 @@
 #include <PubSubClient.h>
 // Include thư viện chứa thông tin mạng WiFi & HiveMQ broker
 #include "setup_WiFi_and_connect_mqtt.h" 
+#include "subcribe.h"
 // Thông tin mạng WiFi & HiveMQ broker
 
 #include "read_sensor.h"
@@ -23,6 +24,8 @@ void setup() {
   setup_wifi();
   espClient.setInsecure();
   client.setServer(mqtt_server, mqtt_port);
+  client.setCallback(callback);
+  Serial.setDebugOutput(true);
 }
 
 //Loop

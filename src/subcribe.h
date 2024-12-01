@@ -1,3 +1,5 @@
+#ifndef SUBCRIBE
+#define SUBCRIBE
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
 #include <PubSubClient.h>
@@ -15,11 +17,16 @@ int timer = 0;
 
 //Define function
 void callback(char* topic, byte* payload, unsigned int length);
+void mdnh_func(int floorrs[10], int zones[10], String messages[10], int indexx);
+void level_func(int floorrs[10], int zones[10], int levels[10], int indexx);
+void fire_alarm(int level[3][6]);
+
 
 void callback(char* topic, byte* payload, unsigned int length) { // Hàm xử lý khi nhận được dữ liệu từ MQTT
 // Hàm sẽ lưu đc 10 mes, 10 floorr, 10 zone hiện tại
   int floorr = topic[4] - '0';
   int zone = topic[6] - '0';
+  // Giải quyết chuỗi
   char message[length+1];
   memcpy(message, payload, length);
   message[length] = '\0';
@@ -190,3 +197,4 @@ void fire_alarm(int level[3][6]) {
     }
   }
 }
+#endif
