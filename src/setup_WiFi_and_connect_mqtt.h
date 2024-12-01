@@ -11,7 +11,17 @@ const char* mqtt_password = "Test12345";    //Password
 // Tạo đối tượng WiFi và MQTT client
 WiFiClientSecure espClient;
 PubSubClient client(espClient);
+// Define topic
 
+int floorrs[10];
+int zones[10];
+int levels[10];
+int indexx = 0;
+int mdnh[3][6] = {0};
+int level[3][6] = {0};
+int timer = 0;
+
+// Define function
 void setup_wifi() {
   delay(10);
   Serial.printf("Connecting to %s\n", ssid);
@@ -30,7 +40,16 @@ void reconnect_mqtt() {
     Serial.print("Attempting MQTT connection...");
     if (client.connect("ESP32Client", mqtt_username, mqtt_password)) {
       Serial.println("connected.");
-    } else {
+      client.subscribe("lap/1/1");
+      client.subscribe("lap/2/1");
+      client.subscribe("lap/3/1");
+      client.subscribe("lap/3/2");
+      client.subscribe("lap/3/3");
+      client.subscribe("lap/3/4");
+      client.subscribe("lap/3/5");
+      client.subscribe("lap/3/6");
+    } 
+    else {
       Serial.printf("failed, rc=%d\n", client.state());
       Serial.println("Try again in 5 seconds.");
       delay(5000);

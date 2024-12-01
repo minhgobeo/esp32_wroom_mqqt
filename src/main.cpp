@@ -7,10 +7,9 @@
 // Thông tin mạng WiFi & HiveMQ broker
 
 #include "read_sensor.h"
-
+// Define variable to send data to MQTT
 char topic_send_data_sensor[10];
 char mes[15];
-
 //Setup
 void setup() {
   Serial.begin(115200);
