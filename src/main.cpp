@@ -8,7 +8,7 @@
 
 #include "read_sensor.h"
 
-char topic_read_sensor[10];
+char topic_send_data_sensor[10];
 char mes[15];
 
 //Setup
@@ -54,9 +54,9 @@ void loop() {
   Serial.printf("%d %d, %d %d\n", read_temp(count), logic_temp(read_temp(count)), read_smoke(count, analogsmoke), logic_smoke(read_smoke(count, analogsmoke)));
 
   // xong roi gui data len hivemq (chia topic sao ta)
-  snprintf(topic_read_sensor, 17, "esp/%d/%d", floorr, zone);
+  snprintf(topic_send_data_sensor, 17, "esp/%d/%d", floorr, zone);
   snprintf(mes, 11, "%d%d", logic_temp(read_temp(count)), logic_smoke(read_smoke(count, analogsmoke)));
-  client.publish(topic_read_sensor, mes);
+  client.publish(topic_send_data_sensor, mes);
 
   count++;
   delay(50);

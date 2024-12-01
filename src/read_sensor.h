@@ -12,7 +12,7 @@ int analogsmoke[3] = {34, 35, 36};  //Add them sau
 int count = 0; 
 //count 0,1 là floor 1 zone 1, floor 2 zone 1
 //count 2->7 là floor 3 zone 1 -> 6:
-int floorr = 0;
+int floorr = 0; // tầng sẽ publish lên mqtt
 int zone = 0;
 
 int read_temp(int count);
