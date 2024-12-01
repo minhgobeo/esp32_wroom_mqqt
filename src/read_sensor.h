@@ -15,12 +15,18 @@ int count = 0;
 int floorr = 0;
 int zone = 0;
 
+int read_temp(int count);
+int logic_temp(int value);
+int read_smoke(int count, int analogsmoke[]);
+int logic_smoke(int value);
+
 int read_temp(int count) {
   digitalWrite(ctrpin[0], count & 0x01);
   digitalWrite(ctrpin[1], count >> 1 & 0x01);
   digitalWrite(ctrpin[2], count >> 2 & 0x01);
   return thermocouple.readCelsius();
 }
+
 int logic_temp(int value) {
   if (value < 45) {
     return 0;
@@ -30,7 +36,7 @@ int logic_temp(int value) {
   return 2;
 }
 
-int read_smoke(int count, int analogsmoke[3]) {
+int read_smoke(int count, int analogsmoke[]) {
   int value = analogRead(analogsmoke[count]) * 1000 / 4095;
   return value;
 }
