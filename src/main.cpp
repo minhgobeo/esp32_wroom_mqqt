@@ -69,7 +69,7 @@ void loop() {
   client.publish(topic_send_data_sensor, mes);
 
   count++;
-  delay(50);
+  delay(300);
 
 }
 
