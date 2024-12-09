@@ -5,17 +5,18 @@
 #include <WiFiClientSecure.h>
 #include <PubSubClient.h>
 #include "credential.h"
-/*
+
 const char* mqtt_server = "4838f20abef342ccba6a129cecb3ebe8.s1.eu.hivemq.cloud";
 const int mqtt_port = 8883;
 const char* mqtt_username = "testaccount";  //User
 const char* mqtt_password = "Test12345";    //Password
-*/
+
+/*
 const char* mqtt_server = "bf9e78d9019447609bada8c1a9b76912.s1.eu.hivemq.cloud";
 const int mqtt_port = 8883;
 const char* mqtt_username = "test_MQQT";
 const char* mqtt_password = "123ABC456abc";
-
+*/
 // Tạo đối tượng WiFi và MQTT client
 WiFiClientSecure espClient;
 PubSubClient client(espClient);
